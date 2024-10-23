@@ -1,5 +1,7 @@
 package studio6;
 
+import java.awt.Color;
+
 import edu.princeton.cs.introcs.StdDraw;
 
 public class RecursiveMethods {
@@ -31,10 +33,15 @@ public class RecursiveMethods {
 	 * @param radiusMinimumDrawingThreshold radius above which drawing should occur
 	 */
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius, double radiusMinimumDrawingThreshold) {
-		if (radius > radiusMinimumDrawingThreshold) {
-			StdDraw.setPenColor();
+		if (radius < radiusMinimumDrawingThreshold) { //base case
+			return;
+		} else {
+			StdDraw.setPenColor(Color.pink);
 			StdDraw.circle(xCenter, yCenter, radius);
-			circlesUponCircles
+			circlesUponCircles(xCenter - radius, yCenter, radius/3.0, radiusMinimumDrawingThreshold); //left
+			circlesUponCircles(xCenter + radius, yCenter, radius/3.0, radiusMinimumDrawingThreshold); //right
+			circlesUponCircles(xCenter, yCenter - radius, radius/3.0, radiusMinimumDrawingThreshold); //lower
+			circlesUponCircles(xCenter, yCenter + radius, radius/3.0, radiusMinimumDrawingThreshold); //upper
 		}
 		
 		// FIXME
