@@ -30,8 +30,12 @@ public class RecursiveMethods {
 	 *                                      depth
 	 * @param radiusMinimumDrawingThreshold radius above which drawing should occur
 	 */
-	public static void circlesUponCircles(double xCenter, double yCenter, double radius,
-			double radiusMinimumDrawingThreshold) {
+	public static void circlesUponCircles(double xCenter, double yCenter, double radius, double radiusMinimumDrawingThreshold) {
+		if (radius > radiusMinimumDrawingThreshold) {
+			StdDraw.setPenColor();
+			StdDraw.circle(xCenter, yCenter, radius);
+			circlesUponCircles
+		}
 		
 		// FIXME
 	}
